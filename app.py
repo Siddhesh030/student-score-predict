@@ -48,7 +48,7 @@ except Exception as e:
 # Title and App Description
 st.title("🎓 Student Performance Predictor")
 st.markdown("Estimate a student's final score using behavioral and attendance metrics.")
-st.hr()
+st.divider()  # Fixed: Changed from st.hr() to st.divider()
 
 # Layout splits: Sidebar for inputs, Main panel for results
 st.sidebar.header("🎯 Input Features")
@@ -85,9 +85,7 @@ with col2:
 
 # Prediction Pipeline
 if st.button("Predict Target Score"):
-    # Format features match ['hours_studied', 'sleep_hours', 'attendance_percent', 'previous_scores']
     features = np.array([[hours_studied, sleep_hours, attendance_percent, previous_scores]])
-    
     prediction = model.predict(features)[0]
     
     st.markdown('<div class="prediction-box">', unsafe_allow_html=True)
